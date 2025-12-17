@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dathu</title>
+
+
+    <style>
+        /* --- Thiết lập biến CSS và cơ bản --- */
+:root {
+    /* THAY THẾ ĐƯỜNG DẪN DƯỚI ĐÂY BẰNG ẢNH CỦA BẠN */
+    --background-image-url: url('duong-dan-den-buc-tranh-lon-cua-botticelli.jpg'); 
+    --primary-color: #2b2b2b; /* Màu chữ chính/menu */
+    --accent-color: #a08c5c; /* Màu vàng nâu của thanh công cụ */
+}
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif; /* Phông chữ cổ điển hơn */
+    color: var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- 1. Thanh Điều Hướng (Header) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: absolute; /* Đặt header nổi trên banner */
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+    text-transform: uppercase;
+}
+
+.header-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    font-size: 0.85em;
+    font-weight: 500;
+    padding: 5px 0;
+    color: #fff; /* Chữ trắng trên nền ảnh */
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-item:hover {
+    opacity: 1;
+}
+
+/* Logo Chính Giữa */
+.logo-center a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff; /* Chữ trắng */
+}
+
+/* Mục VISIT (có vẻ như màu đỏ hoặc nổi bật hơn) */
+.visit-link {
+    /* Bạn có thể thêm màu khác ở đây nếu muốn nổi bật */
+    color: #ffffff; 
+    font-weight: bold;
+    opacity: 1;
+}
+
+/* --- 2. Phần Banner Chính (Hero) --- */
+
+.hero-banner-section {
+    /* Đặt hình ảnh nền */
+    background: url("../Project/image/dt.jpg ") center / contain no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Tạo hiệu ứng parallax nhẹ nếu muốn */
+    
+    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Giữ ảnh trong khu vực */
+}
+
+/* Nội dung chính giữa */
+.hero-content {
+    text-align: center;
+    z-index: 50;
+    color: #f7f3e8; /* Màu be nhạt cho chữ trên ảnh */
+    padding: 0 20px;
+    /* Dịch chuyển nhẹ nội dung nếu cần */
+    /* transform: translateY(50px); */ 
+}
+
+/* Tên nghệ sĩ */
+.artist-name {
+    font-size: 7em; /* Kích thước chữ rất lớn */
+    font-weight: normal;
+    line-height: 0.9;
+    margin: 0;
+    /* Hiệu ứng bóng đổ nhẹ để nổi bật trên nền ảnh */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); 
+}
+
+/* Dòng giới thiệu nhỏ */
+.museum-tagline {
+    font-size: 1em;
+    margin: 30px 0 5px 0;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* Tên nghệ sĩ lặp lại ở dưới */
+.artist-name-small {
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* --- 3. Thanh Công Cụ Nổi (Sidebar Tools) --- */
+
+
+
+.tool-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+.tool-item:last-child {
+    border-bottom: none;
+}
+
+.tool-item:hover {
+    background-color: #c0a877; /* Màu sáng hơn khi hover */
+}
+
+
+/* --- Thiết lập chung cho phần thân trang --- */
+.artist-intro-section {
+    /* Màu nền nhạt, giống màu be */
+    background-color: #f7f4ec; 
+    /* Dùng Flexbox hoặc Grid để tạo bố cục 2 cột */
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 80px; /* Đệm lớn */
+    position: relative;
+    overflow: hidden; /* Quan trọng để quản lý hình ảnh nền */
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+/* --- Cột Bên Trái (Left Column) --- */
+.intro-left-column {
+    flex: 0 0 35%; /* Chiếm khoảng 35% chiều rộng */
+    padding-right: 50px;
+    z-index: 2; /* Đảm bảo nội dung nằm trên hình ảnh mờ */
+}
+
+/* Tiêu đề lớn */
+.artist-name-large {
+    font-size: 4.5em; /* Kích thước chữ lớn */
+    line-height: 0.95;
+    font-weight: normal;
+    color: #2b2b2b; /* Màu chữ đen đậm */
+    margin: 0 0 50px 0;
+    text-transform: capitalize;
+}
+
+/* Đoạn giới thiệu nổi bật */
+.highlight-text {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #444; 
+    margin-bottom: 50px;
+}
+
+/* Link MORE ABOUT */
+.more-about-link {
+    display: inline-flex; /* Để mũi tên và chữ nằm cùng dòng */
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.more-about-link:hover {
+    color: #000;
+}
+
+/* Mũi tên */
+.more-about-link span {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+/* --- Cột Bên Phải (Right Column) --- */
+.intro-right-column {
+    flex: 0 0 55%; /* Chiếm khoảng 55% chiều rộng */
+    column-count: 2; /* Chia thành 2 cột văn bản */
+    column-gap: 40px; /* Khoảng cách giữa 2 cột */
+    font-size: 0.9em;
+    line-height: 1.8;
+    color: #555;
+    z-index: 2;
+    position: relative; /* Dùng cho background-artwork-overlay */
+}
+
+.description-paragraph {
+    /* Giúp các đoạn văn bản giữ nguyên trong cột */
+    break-inside: avoid; 
+    margin-bottom: 25px;
+}
+
+/* --- Hiệu ứng hình ảnh nền mờ (Background Artwork Overlay) --- */
+
+.background-artwork-overlay {
+    position: absolute;
+    bottom: -100px; /* Đặt hình ảnh hơi lệch xuống dưới và sang phải */
+    right: -100px;
+    width: 600px; /* Kích thước lớn */
+    height: 600px;
+    /* THAY THẾ ĐƯỜNG DẪN DƯỚI ĐÂY BẰNG HÌNH ẢNH NÉT VẼ CỦA BẠN */
+    background-image: url('duong-dan-den-hinh-anh-net-ve-trang-tri.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15; /* Độ mờ cao */
+    z-index: 1; /* Đặt dưới nội dung */
+    pointer-events: none; /* Đảm bảo không cản trở việc chọn chữ */
+}
+
+/* --- Media Queries (Tùy chọn: Dành cho thiết bị di động) --- */
+@media (max-width: 900px) {
+    .artist-intro-section {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    .intro-left-column {
+        flex: auto;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .artist-name-large {
+        font-size: 3em;
+    }
+
+    .intro-right-column {
+        flex: auto;
+        column-count: 1; /* Chuyển về 1 cột trên di động */
+        column-gap: 0;
+    }
+
+    .background-artwork-overlay {
+        width: 400px;
+        height: 400px;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+
+/* --- Chèn ảnh --- */
+/* --- Thiết lập chung cho phần Bộ Sưu Tập --- */
+.collection-section {
+    /* Màu nền nhạt, giống màu be từ ảnh trước */
+    background-color: #f7f4ec; 
+    padding: 80px 80px; 
+    font-family: Arial, sans-serif;
+}
+
+/* --- Thiết lập chung (Giữ nguyên) --- */
+.collection-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #c4c4c4;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: 500;
+    color: #2b2b2b;
+    margin: 0;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.view-all-link:hover {
+    color: #000;
+}
+
+.collection-description {
+    font-size: 1em;
+    color: #555;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+/* --- Lưới Bộ Sưu Tập (Sử dụng CSS Grid) --- */
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px 30px; 
+}
+
+.collection-item {
+    display: block;
+    text-decoration: none;
+    color: #2b2b2b;
+    /* transition: opacity 0.3s; (Đã thay bằng transition cho hiệu ứng float) */
+}
+
+/* * Quan trọng: Khung chứa ảnh để giới hạn hiệu ứng zoom 
+*/
+.artwork-image-container {
+    width: 100%;
+    overflow: hidden; /* Giữ cho hình ảnh không bị tràn ra ngoài khi zoom */
+    margin-bottom: 15px;
+    /* * Thêm đường viền hoặc bóng nếu muốn có khung bao quanh ảnh
+    * border: 1px solid #eee;
+    */
+}
+
+/* * Quan trọng: Thiết lập cho thẻ <img> để tự điều chỉnh tỷ lệ 
+*/
+.artwork-image {
+    width: 100%;
+    /* * height: auto là thuộc tính mặc định, giúp ảnh giữ tỷ lệ.
+    * Chúng ta không dùng height cố định.
+    */
+    height: auto; 
+    display: block;
+    /* Thiết lập transition cho hiệu ứng float/zoom */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    
+    /* * Nếu ảnh có tỷ lệ khung hình khác nhau, bạn có thể buộc ảnh 
+    * lấp đầy khung chứa (nếu bạn dùng padding hack) 
+    * object-fit: cover; 
+    */
+}
+
+/* * HIỆU ỨNG NỔI (FLOAT/ZOOM) KHI DI CHUỘT
+*/
+.collection-item:hover .artwork-image {
+    transform: scale(1.05); /* Phóng to 5% */
+    /* Tạo cảm giác "nổi" */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
+    z-index: 10; /* Đảm bảo nó nổi lên trên các ảnh khác */
+}
+
+/* --- Phần chữ tách biệt --- */
+
+.artwork-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.artwork-artist {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+/* --- Media Queries (Giữ nguyên cấu trúc responsive) --- */
+@media (max-width: 900px) {
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    .collection-grid {
+        grid-template-columns: 1fr;
+        gap: 20px 0;
+    }
+}
+
+
+.hero-banner {
+    /* Màu nền đen đậm */
+    background-color: #1e1e1e; 
+    /* Hình ảnh làm nền (background image) */
+    background-image: url("../Learning/image/f2.jpg"); 
+    background-size: cover;
+    background-position: center;
+    /* Thiết lập cho việc căn giữa nội dung */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Đệm (padding) để tạo khoảng trống trên và dưới */
+    padding: 100px 20px; 
+    /* Vị trí tương đối để định vị nút cuộn lên tuyệt đối */
+    position: relative;
+    /* Màu chữ tổng thể */
+    color: #fff; 
+}
+
+/* Tạo lớp phủ (overlay) mờ để chữ nổi bật hơn */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Màu đen với độ trong suốt thấp */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 1; /* Đặt dưới nội dung */
+}
+
+/* Đảm bảo nội dung nằm trên lớp phủ */
+.banner-content {
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Mô tả chủ đề */
+.theme-description {
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9c9c9; /* Màu xám nhạt hơn */
+    margin-bottom: 10px;
+}
+
+/* Tiêu đề chính */
+.main-cta {
+    font-size: 4.5em; /* Kích thước lớn */
+    font-weight: 800; /* In đậm */
+    color: #ffffff;
+    margin: 0 0 40px 0;
+    line-height: 1.1;
+    /* Nếu muốn có hiệu ứng đường viền chữ */
+    /* text-shadow: 1px 1px 0 rgba(0,0,0,0.2); */ 
+}
+
+/* Nút CTA */
+.cta-button {
+    /* Màu nền của nút giống màu be nhạt trong ảnh */
+    background-color: #f7f3e8; 
+    color: #1e1e1e; /* Màu chữ đen */
+    text-decoration: none; /* Bỏ gạch chân */
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block; /* Quan trọng để áp dụng padding */
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e6e0d2; /* Thay đổi màu khi di chuột */
+}
+
+/* Nút cuộn lên */
+.scroll-up-button {
+    position: absolute;
+    bottom: 30px; /* Cách đáy 30px */
+    right: 30px; /* Cách lề phải 30px */
+    background-color: #1e1e1e; /* Màu nền đen */
+    border: 1px solid #ffffff; /* Viền trắng */
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Hình tròn */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-decoration: none;
+    z-index: 3;
+}
+
+
+/* --- Thiết lập chung cho Footer --- */
+.main-footer-section {
+    /* Màu nền đen đậm */
+    background-color: #262723; 
+    padding: 80px 80px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    position: relative; /* Cho nút cuộn lên */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Cột 1: Thông tin Liên hệ --- */
+.contact-column {
+    flex: 0 0 35%; /* Chiếm khoảng 35% chiều rộng */
+    /* Phông chữ cho Logo */
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+.footer-logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    /* Màu vàng nâu cho logo giống trong ảnh */
+    color: #f5d47e; 
+    margin-bottom: 20px;
+}
+
+.museum-tagline,
+.address,
+.phone-number {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #c9c9c9; /* Màu chữ xám nhạt */
+    margin: 5px 0;
+}
+
+/* --- Các Cột Liên kết (2, 3, 4) --- */
+.footer-column {
+    flex: 0 0 15%; /* Các cột này chiếm khoảng 15% mỗi cột */
+}
+
+.column-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    list-style: none; /* Bỏ dấu chấm đầu dòng */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #c9c9c9;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff; /* Sáng hơn khi di chuột */
+}
+
+/* --- Nút Cuộn Lên (Giữ lại từ phần trước, nhưng đã bỏ thanh công cụ) --- */
+.scroll-up-button {
+    position: absolute;
+    bottom: 20px; 
+    right: 30px; 
+    background-color: #f5d47e; /* Màu vàng nâu từ ảnh */
+    color: #262723; /* Màu chữ/icon đen */
+    width: 40px;
+    height: 40px;
+    border-radius: 5px; /* Hình vuông bo góc */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-decoration: none;
+    z-index: 10;
+}
+
+/* --- Media Queries (Tùy chọn: Dành cho thiết bị di động) --- */
+@media (max-width: 850px) {
+    .main-footer-section {
+        padding: 50px 20px;
+    }
+    
+    .footer-container {
+        /* Chuyển sang bố cục linh hoạt hơn cho các cột */
+        flex-wrap: wrap; 
+        gap: 30px;
+    }
+
+    .contact-column {
+        flex: 1 1 100%; /* Chiếm toàn bộ chiều rộng ở hàng đầu */
+    }
+
+    .footer-column {
+        flex: 1 1 40%; /* 2 cột mỗi hàng (ngoại trừ cột liên hệ) */
+    }
+    
+    .scroll-up-button {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+    </style>
+
+</head>
+
+
+
+
+
+
+<body>
+    
+    <header class="main-header">
+    <div class="header-nav left-nav">
+        <a href="Main.html" class="nav-item">TRANG CHỦ</a>
+        <a href="#" class="nav-item">TRƯNG BÀY</a>
+        <a href="#" class="nav-item">WIKIDEPIA</a>
+        <a href="#" class="nav-item">ABOUT US</a>
+    </div>
+    
+    <div class="logo-center">
+        <a href="#">Art</a>
+    </div>
+
+</header>
+
+<div class="hero-banner-section" id="banner-with-image">
+    <div class="hero-content">
+        <h1 class="artist-name">Trường Phái Dã Thú</h1>
+        <p class="museum-tagline">Conscience is a man's compass</p>
+    </div>
+</div>
+
+
+<!--Giới thiệu-->
+<section class="artist-intro-section">
+    <div class="intro-left-column">
+        <h2 class="artist-name-large">Trường Phái<br>Dã Thú</h2>
+        
+        <p class="highlight-text">
+            Trường phái dã thú (Fauvism) là một trường phái nghệ thuật tồn tại trong thời gian ngắn của một nhóm họa sĩ hiện đại.
+        </p>
+        
+        <a href="#" class="more-about-link">
+            MORE ABOUT 
+            &rarr;
+        </a>
+    </div>
+
+    <div class="intro-right-column">
+        <p class="description-paragraph">
+            Dã thú gây ấn tượng mạnh bởi màu sắc rực rỡ, táo bạo và phi tự nhiên. Hình ảnh trong tranh thường được đơn giản hóa, không tuân theo luật phối cảnh hay ánh sáng truyền thống.
+        </p>
+        
+        <p class="description-paragraph">
+            Mục tiêu của trường phái này là giải phóng màu sắc, biến màu thành công cụ biểu đạt cảm xúc hơn là mô tả hiện thực.
+        </p>
+        
+        <p class="description-paragraph">
+            Trường phái này có sự phản ứng mạnh mẽ chống lại trường phái ấn tượng, chống lại sự mất mát không gian do dùng quá nhiều ánh sáng, do sự phân tích tỉ mỉ, không theo quy luật nào, vì thế chỉ là sự ngẫu nhiên và không có suy tính trước.
+        </p>
+        
+        <p class="description-paragraph last-paragraph">
+            Bức tranh là một bố cục nhiều màu, không phải là sự sao chép thiên nhiên; là sự liên tục tạo hình sống động, không là cảnh sắc vặt vụn, là một sự bố cục màu sắc mạnh bạo, không phải là sự tình cờ đẹp mắt
+        </p>
+        
+        <div class="background-artwork-overlay"></div>
+    </div>
+</section>
+
+
+<!--chèn ảnh-->
+<section class="collection-section">
+    <div class="collection-header">
+        <h2 class="section-title">Collection</h2>
+        
+        <a href="#" class="view-all-link">
+            VIEW ALL COLLECTION 
+            &rarr;
+        </a>
+    </div>
+
+
+    <div class="collection-grid">
+        
+        <a href="https://vi.wikipedia.org/wiki/Ti%E1%BA%BFng_th%C3%A9t_(tranh)" class="collection-item">
+            <div class="artwork-image-container">
+                <img src="image/d0.jpg" alt="Madonna with Saints" class="artwork-image">
+            </div>
+            <h3 class="artwork-title">The Turning Road, L'Estaque</h3>
+            <p class="artwork-artist">André Derain</p>
+        </a>
+
+        <a href="#" class="collection-item">
+            <div class="artwork-image-container">
+                <img src="image/d1.jpg" alt="St. Sebastian" class="artwork-image">
+            </div>
+            <h3 class="artwork-title">Self-Portrait</h3>
+            <p class="artwork-artist">Vincent Van Gogh</p>
+        </a>
+
+        <a href="#" class="collection-item">
+            <div class="artwork-image-container">
+                <img src="image/d3.jpg" alt="The Adoration of the Magi" class="artwork-image">
+            </div>
+            <h3 class="artwork-title">Luxe, Calme et Volupté</h3>
+            <p class="artwork-artist"> Henri Matisse</p>
+        </a>
+        
+        <a href="#" class="collection-item">
+            <div class="artwork-image-container">
+                <img src="image/d4.jpg" alt="The Birth of Venus" class="artwork-image">
+            </div>
+            <h3 class="artwork-title">The Seine at Chatou </h3>
+            <p class="artwork-artist">Maurice de Vlaminck</p>
+        </a>
+
+        <a href="#" class="collection-item">
+            <div class="artwork-image-container">
+                <img src="image/d5.jpg" alt="Primavera" class="artwork-image">
+            </div>
+            <h3 class="artwork-title">Landscape near Cassis</h3>
+            <p class="artwork-artist">André Derain </p>
+        </a>
+
+        <a href="#" class="collection-item">
+            <div class="artwork-image-container">
+                <img src="image/d7.jpg" alt="Venus and Mars" class="artwork-image">
+            </div>
+            <h3 class="artwork-title">The Port of Le Havre</h3>
+            <p class="artwork-artist">Raoul Dufy</p>
+        </a>
+
+    </div>
+</section>
+
+<!--footer-->
+<footer class="hero-banner">
+    <div class="banner-content">
+        <p class="theme-description">Art Gallery & Museum WordPress Theme</p>
+        
+        <h1 class="main-cta">Connect with us</h1>
+        
+        <a href="#" class="cta-button">0987781916</a>
+    </div>
+
+</footer>
+
+
+<footer class="main-footer-section">
+    <div class="footer-container">
+        
+        <div class="footer-column contact-column">
+            <div class="footer-logo">Art</div>
+            <p class="museum-tagline">Nghệ Thuật và Thời Gian</p>
+            <p class="phone-number">098 778 1916</p>
+        </div>
+
+        <div class="footer-column link-column">
+            <h3 class="column-title">Links</h3>
+            <ul class="footer-links">
+                <li><a href="Main.html">HOME</a></li>
+                <li><a href="Main.html">EXHIBITIONS</a></li>
+                <li><a href="Main.html">COLLECTIONS</a></li>
+                <li><a href="Main.html">EVENTS</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column info-column">
+            <h3 class="column-title">Info</h3>
+            <ul class="footer-links">
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">SHOP</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column social-column">
+            <h3 class="column-title">Social</h3>
+            <ul class="footer-links">
+                <li><a href="#">X</a></li>
+                <li><a href="#">INSTAGRAM</a></li>
+                <li><a href="#">FACEBOOK</a></li>
+                <li><a href="#">PINTEREST</a></li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <a href="#top" class="scroll-up-button">
+        &#x2191; 
+    </a>
+</footer>
+
+
+
+    
+</body>
+
+
+
+</html>

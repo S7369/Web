@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title> Art </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    <link href="fonts.googleapis.com" rel="stylesheet">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f6f4ea;
+            color: #111;
+        }
+
+        /* HEADER */
+.top-header {
+    background: #111;
+    color: #eee;
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    font-size: 14px;
+}
+
+.top-header a {
+    color: #eee;
+    text-decoration: none;
+    margin-right: 24px;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-right {
+    text-align: right;
+}
+
+.buy {
+    font-weight: 600;
+}
+
+/* HERO */
+.hero-ozeum {
+    position: relative;
+    min-height: 90vh;
+    background: #f6f4ea;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SKETCH BACKGROUND */
+.hero-sketch {
+    position: absolute;
+    inset: 0;
+    background: url("sketch.png") center / contain no-repeat;
+    opacity: 0.25;
+}
+
+/* CENTER TEXT */
+.hero-center {
+    position: relative;
+    text-align: center;
+    z-index: 3;
+    max-width: 700px;
+}
+
+.hero-center small {
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+}
+
+.hero-center h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 30px 0 40px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 16px 42px;
+    background: #111;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* FLOATING IMAGES */
+.floating {
+    position: absolute;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    border-radius: 4px;
+    transition: transform 0.5s ease;
+    z-index: 2;
+}
+
+.floating:hover {
+    transform: translateY(-12px) scale(1.03);
+}
+
+/* POSITIONS */
+.left-main {
+    left: 6%;
+    top: 32%;
+    width: 340px;
+}
+
+.left-top {
+    left: 22%;
+    top: 14%;
+    width: 260px;
+}
+
+.right-main {
+    right: 6%;
+    top: 34%;
+    width: 360px;
+}
+
+.right-bottom {
+    right: 18%;
+    bottom: 10%;
+    width: 300px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .floating {
+        display: none;
+    }
+
+    .hero-center h1 {
+        font-size: 48px;
+    }
+}
+
+
+        .demo-section {
+    padding: 80px 40px;
+    background: #f7f5ed;
+}
+
+.demo-section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background: #111;
+    margin-bottom: 60px;
+}
+
+/* GRID 3 CỘT */
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* ITEM */
+.demo-item {
+    text-decoration: none;
+    color: #111;
+    transition: transform 0.3s ease;
+}
+
+/* ẢNH */
+.demo-image {
+    overflow: hidden;
+    border-radius: 4px;
+    background: #ddd;
+}
+
+.demo-image img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+/* CHỮ */
+.demo-item h3 {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    margin-top: 18px;
+    font-weight: 600;
+}
+
+/* HOVER */
+.demo-item:hover {
+    transform: translateY(-8px);
+}
+
+.demo-item:hover img {
+    transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .demo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .demo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-section h2 {
+        font-size: 36px;
+    }
+}
+
+
+.hero-banner {
+    /* Màu nền đen đậm */
+    background-color: #1e1e1e; 
+    /* Hình ảnh làm nền (background image) */
+    background-image: url("../Learning/image/f2.jpg"); 
+    background-size: cover;
+    background-position: center;
+    /* Thiết lập cho việc căn giữa nội dung */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Đệm (padding) để tạo khoảng trống trên và dưới */
+    padding: 100px 20px; 
+    /* Vị trí tương đối để định vị nút cuộn lên tuyệt đối */
+    position: relative;
+    /* Màu chữ tổng thể */
+    color: #fff; 
+}
+
+/* Tạo lớp phủ (overlay) mờ để chữ nổi bật hơn */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Màu đen với độ trong suốt thấp */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 1; /* Đặt dưới nội dung */
+}
+
+/* Đảm bảo nội dung nằm trên lớp phủ */
+.banner-content {
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Mô tả chủ đề */
+.theme-description {
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9c9c9; /* Màu xám nhạt hơn */
+    margin-bottom: 10px;
+}
+
+/* Tiêu đề chính */
+.main-cta {
+    font-size: 4.5em; /* Kích thước lớn */
+    font-weight: 800; /* In đậm */
+    color: #ffffff;
+    margin: 0 0 40px 0;
+    line-height: 1.1;
+    /* Nếu muốn có hiệu ứng đường viền chữ */
+    /* text-shadow: 1px 1px 0 rgba(0,0,0,0.2); */ 
+}
+
+/* Nút CTA */
+.cta-button {
+    /* Màu nền của nút giống màu be nhạt trong ảnh */
+    background-color: #f7f3e8; 
+    color: #1e1e1e; /* Màu chữ đen */
+    text-decoration: none; /* Bỏ gạch chân */
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block; /* Quan trọng để áp dụng padding */
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e6e0d2; /* Thay đổi màu khi di chuột */
+}
+
+/* Nút cuộn lên */
+.scroll-up-button {
+    position: absolute;
+    bottom: 30px; /* Cách đáy 30px */
+    right: 30px; /* Cách lề phải 30px */
+    background-color: #1e1e1e; /* Màu nền đen */
+    border: 1px solid #ffffff; /* Viền trắng */
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Hình tròn */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-decoration: none;
+    z-index: 3;
+}
+
+    </style>
+</head>
+<body>
+
+<header class="top-header">
+    <div class="nav-left">
+        <a href="#">GIỚI THIỆU</a>
+        <a href="#">TRANG CHỦ</a>
+    </div>
+
+    <div class="logo">Art</div>
+
+    <div class="nav-right">
+        <a href="#">TÀI LIỆU</a>
+        <a href="#">HỖ TRỢ</a>
+        <a href="#" class="buy">ĐĂNG KÝ</a>
+    </div>
+</header>
+
+<section class="hero-ozeum">
+
+    <!-- background sketch -->
+    <div class="hero-sketch">
+        <img src="image/banner.webp">
+    </div>
+
+    <!-- floating images -->
+    <!--
+    <img src="image/f2.jpg" class="floating left-main" alt="">
+    <img src="image/f1.jpg" class="floating left-top" alt="">
+
+    <img src="image/f3.jpg" class="floating right-main" alt="">
+    <img src="image/f4.jpg" class="floating right-bottom" alt="">
+    -->
+
+    <!-- center content -->
+    <div class="hero-center">
+        <small>Thế giới hình ảnh</small>
+        <h1>Nghệ Thuật &<br>Thời Gian</h1>
+        <a href="#" class="btn">GIỚI THIỆU</a>
+    </div>
+
+</section>
+
+
+
+<section class="demo-section">
+    <h2>Explore Collections</h2>
+    <div class="divider"></div>
+
+    <div class="demo-grid">
+
+        <!-- ITEM 1 -->
+        <a href="bieuhien.html" class="demo-item">
+            <!-- TODO: thêm link trang Museum Home -->
+            <div class="demo-image">
+                <img src="image/bieu_hien.jpg" alt="Mona Lisa">
+            </div>
+            <h3>Trường phái biểu hiện</h3>
+        </a>
+
+        <!-- ITEM 2 -->
+        <a href="antuong.html" class="demo-item">
+            <!-- TODO: thêm link Modern Interactive Museum -->
+            <div class="demo-image">
+                <img src="image/an_tuong2.jpg" alt="Trường phái ấn tượng">
+            </div>
+            <h3>Trường phái ấn tượng</h3>
+        </a>
+
+        <!-- ITEM 3 -->
+        <a href="dathu.html" class="demo-item">
+            <!-- TODO: thêm link Modern Art Gallery -->
+            <div class="demo-image">
+                <img src="image/da_thu.webp" alt="Modern Art Gallery">
+            </div>
+            <h3>Trường phái dã thú</h3>
+        </a>
+
+        <!-- ITEM 4 -->
+        <a href="lapthe.html" class="demo-item">
+            <div class="demo-image">
+                <img src="image/lap_the.jpg" alt="Collections">
+            </div>
+            <h3>Trường phái lập thể</h3>
+        </a>
+
+        <!-- ITEM 5 -->
+        <a href="vilai.html" class="demo-item">
+            <div class="demo-image">
+                <img src="image/tuong_lai.jpg" alt="Artist Portfolio">
+            </div>
+            <h3>Trường phái vị lai</h3>
+        </a>
+
+        <!-- ITEM 6 -->
+        <a href="tudo.html" class="demo-item">
+            <div class="demo-image">
+                <img src="image//tudo.jpg" alt="Exhibition">
+            </div>
+            <h3>Các bức tranh không trường phái</h3>
+        </a>
+
+    </div>
+</section>
+
+
+<footer class="hero-banner">
+    <div class="banner-content">
+        <p class="theme-description">Art Gallery & Museum WordPress Theme</p>
+        
+        <h1 class="main-cta">Connect with us</h1>
+        
+        <a href="#" class="cta-button">0987781916</a>
+    </div>
+    
+    <a href="#top" class="scroll-up-button">
+        &#x2191; 
+    </a>
+</footer>
+
+
+</body>
+</html>
